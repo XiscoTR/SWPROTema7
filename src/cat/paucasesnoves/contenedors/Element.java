@@ -6,7 +6,6 @@ public class Element <E>{
     private E info;
     private Element seguent;
 
-
     public Element(E info, Element elementInteger) {
         this.info = info;
         this.seguent = elementInteger;

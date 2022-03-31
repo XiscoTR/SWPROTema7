@@ -10,23 +10,43 @@ public class Main {
     public static void main(String[] args) {
 
         Main p = new Main();
-        System.out.println("/PilaIntegers2/" + "\n");
-        p.provaPilaIntegers2();
-        System.out.println("\n" + "------------------------");
+
         System.out.println("/PilaIntegers/" + "\n");
         p.provaPilaIntegers();
-        System.out.println("\n" + "------------------------");
+        p.cadena();
+        System.out.println("/PilaIntegers2/" + "\n");
+        p.provaPilaIntegers2();
+        p.cadena();
         System.out.println("/PilaStack/" + "\n");
         p.provaPilaStack();
-        System.out.println("\n" + "------------------------");
-        System.out.println("/CoaArrayDeque/" + "\n");
+        p.cadena();
+        System.out.println("/PilaArrayDeque/" + "\n");
+        p.provaPilaArrayDeque();
+        p.cadena();
+        System.out.println("/CoaArayDeque/" + "\n");
         p.provaCoaArrayDeque();
-        System.out.println("\n" + "------------------------");
+        p.cadena();
         System.out.println("/HashSet/" + "\n");
         p.provaHashSet();
-        System.out.println("\n" + "------------------------");
+        p.cadena();
         System.out.println("/HashSet2/" + "\n");
         p.provaHashSet2();
+    }
+
+
+    public void provaPilaIntegers() {
+        PilaInteger a = new PilaInteger();
+        a.push(1);
+        a.push(2);
+        a.push(3);
+        a.push(4);
+        a.mostra();
+        System.out.println("Muestra Integer con un return: " + a.peek());
+        System.out.println("Estado de la pila: " + a.isEmpty());
+        a.pop();
+        a.mostra();
+        System.out.println("Muestra un Integer que acaba de ser eliminado: " + a.poll());
+        a.mostra();
     }
 
     public void provaPilaIntegers2() {
@@ -44,33 +64,34 @@ public class Main {
         a.mostra();
     }
 
-    public void provaPilaIntegers() {
-        PilaInteger a = new PilaInteger();
-        a.push(1);
-        a.push(2);
-        a.push(3);
-        a.push(4);
-        a.mostra();
-        System.out.println("Muestra Integer con un return: " + a.peek());
-        System.out.println("Estado de la pila: " + a.isEmpty());
-        a.pop();
-        a.mostra();
-        System.out.println("Muestra un Integer que acaba de ser eliminado: " + a.poll());
-        a.mostra();
-    }
-
     public void provaPilaStack() {
         Stack<Preferencia> pref = new Stack<>();
         Preferencia a = new Preferencia(1, "Pasta");
         Preferencia b = new Preferencia(2, "Carn");
         Preferencia c = new Preferencia(3, "Peix");
-        System.out.println(pref.push(a));
-        System.out.println(pref.push(b));
-        System.out.println(pref.push(c));
-        System.out.println(pref.pop());
-        System.out.println(pref.peek());
-        System.out.println(pref.empty());
-        System.out.println(pref.search(a));
+        System.out.println("Elemento añadido a la pila: " + pref.push(a));
+        System.out.println("Elemento añadido a la pila: " + pref.push(b));
+        System.out.println("Elemento añadido a la pila: " + pref.push(c));
+        System.out.println("Elemento recuperado: " + pref.pop());
+        System.out.println("Elemento recuperado: " + pref.peek());
+        System.out.println("Pila vacia: " + pref.empty());
+        System.out.println("Buscando elemento: " + pref.search(a));
+    }
+
+    public void provaPilaArrayDeque(){
+        Deque<Preferencia> aq = new ArrayDeque<>();
+        Preferencia a = new Preferencia(1, "Pasta");
+        Preferencia b = new Preferencia(2, "Carn");
+        Preferencia c = new Preferencia(3, "Peix");
+        aq.add(a);
+        aq.add(b);
+        aq.add(c);
+        System.out.println("Elemento eliminado: " + aq.remove(a));
+        System.out.println("Tamaño de la cola: " + aq.size());
+        System.out.println("Primer valor de la cola: " + aq.element());
+        System.out.println("Cola añadido a la memoria: " + aq);
+        aq.clear();
+        System.out.println("Tamaño de la cola despues de un clear: " + 0);
     }
 
     public void provaCoaArrayDeque() {
@@ -93,14 +114,14 @@ public class Main {
         Preferencia b = new Preferencia(1, "Paella");
         preferencia.add(a);
         preferencia.add(b);
-        System.out.println("Si, ha insertado los dos objetos, es el resultado esperado porque " +
-                "los valores de los objetos son iguales y la classe (Preferencia) no tiene el metodo hashCode para diferenciar los dos" +
-                " objetos");
         System.out.println("El elemento existe: " + preferencia.contains(a));
         System.out.println("El numero de elementos es: " + preferencia.size());
         System.out.println("Elemento eliminado: " + preferencia.remove(a));
         System.out.println("El elemento existe: " + preferencia.contains(a));
         System.out.println("El elemento esta vacio: " + preferencia.isEmpty());
+        System.out.println("Si, ha insertado los dos objetos, es el resultado esperado porque " +
+                "los valores de los objetos son iguales y la classe (Preferencia) no tiene el metodo \n" +
+                "hashCode ni el metodo equals para diferenciar los dos objetos");
     }
 
     public void provaHashSet2() {
@@ -112,14 +133,19 @@ public class Main {
         System.out.println("Codigo hash: " + a.hashCode());
         System.out.println("Codigo hash: " + b.hashCode());
         System.out.println("Comparar si los dos objetos son iguales: " + a.equals(b));
-        System.out.println("El resultado obtenido no es el mismo ya que el segundo objeto no se ha añadido " +
-                ", si cambio el valor de los atributos del objeto (b) el codigo Hash cambia y si que se añade el objeto");
         System.out.println("El elemento existe: " + preferencia.contains(a));
         System.out.println("El numero de elementos es: " + preferencia.size());
         System.out.println("Elemento eliminado: " + preferencia.remove(a));
         System.out.println("El elemento existe: " + preferencia.contains(a));
         System.out.println("El elemento esta vacio: " + preferencia.isEmpty());
+        System.out.println("El resultado obtenido no es el mismo ya que el segundo objeto no se ha añadido " +
+                ", si cambio el valor de los atributos del objeto (b) el codigo Hash cambia y si que se añade el objeto");
 
+    }
+
+//Este metodo solo es para el formato de la consola
+    public void cadena(){
+        System.out.println("\n" + "------------------------");
     }
 
 }
