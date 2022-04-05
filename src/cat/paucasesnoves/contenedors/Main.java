@@ -2,6 +2,8 @@ package cat.paucasesnoves.contenedors;
 
 import cat.paucasesnoves.dades.Preferencia;
 import cat.paucasesnoves.dades.Preferencia2;
+import cat.paucasesnoves.dades.Preferencia3;
+import cat.paucasesnoves.dades.Utilitats.TipusPlat;
 
 import java.util.*;
 
@@ -31,6 +33,12 @@ public class Main {
         p.cadena();
         System.out.println("/HashSet2/" + "\n");
         p.provaHashSet2();
+        p.cadena();
+        System.out.println("/HashMap/" + "\n");
+        p.provesHasMap();
+        p.cadena();
+        System.out.println("/Enumeracio/" + "\n");
+        p.provesEnumeracio();
     }
 
 
@@ -143,7 +151,88 @@ public class Main {
 
     }
 
+//(Opcional) /"9"/ Implementa una classe Coa amb totes les operacions vistes per aquest contenidor. Utilitza la classe Element.
+// A la classe Proves crea un mètode anomenat provaCoa on creis una coa de Preferencia i hi posis una sèrie d'elements i els treguis.
 //Este metodo solo es para el formato de la consola
+
+//(Opcional) /"13"/ Al paquet contenidors crea una classe anomenada Conjunt que implementi un conjunt utilitzant objectes del tipus Element.
+// Heu d'implementar totes les operacions definides per el conjunt.
+
+    public void provesHasMap(){
+        HashMap<Integer, Preferencia2> mapaPreferencia = new HashMap<>();
+        Preferencia2 a = new Preferencia2(1, "Paella");
+        Preferencia2 b = new Preferencia2(2, "Peix");
+        Preferencia2 c = new Preferencia2(3, "Carn");
+        Preferencia2 d = new Preferencia2(3, "Carn");
+        mapaPreferencia.put(1, a);
+        mapaPreferencia.put(2, b);
+        mapaPreferencia.put(3, c);
+        System.out.println("El elemento se ha añadido: " + mapaPreferencia.put(4, d));
+        System.out.println("El elemento existe por clave: " + mapaPreferencia.containsKey(2));
+        System.out.println("El elemento existe por valor: " + mapaPreferencia.containsValue(d));
+        System.out.println("Obtener el elemento por clave: " + mapaPreferencia.get(1));
+        for (Preferencia2 valor:mapaPreferencia.values()) {
+            System.out.print(valor + "\t");
+        }
+        System.out.println("\n" + "El tamaño del HashMap es: " + mapaPreferencia.size());
+        System.out.println("Elemento eliminado: " +mapaPreferencia.remove(4));
+        System.out.println("El elemento esta vacio: " + mapaPreferencia.isEmpty());
+    }
+
+    public void provesEnumeracio(){
+        ArrayList <Preferencia3> menu = new ArrayList<>();
+        Preferencia3 a = new Preferencia3(1, "Croquetes" , TipusPlat.Entrants);
+        Preferencia3 b = new Preferencia3(2, "Frit" , TipusPlat.Entrants);
+        Preferencia3 c = new Preferencia3(3, "Paella" , TipusPlat.Principal);
+        Preferencia3 d = new Preferencia3(4, "Pit de pollastre" , TipusPlat.Principal);
+        Preferencia3 e = new Preferencia3(5, "Calamars" , TipusPlat.Segon);
+        Preferencia3 f = new Preferencia3(6, "Sopa" , TipusPlat.Segon);
+        Preferencia3 g = new Preferencia3(7, "Tarta de formatge" , TipusPlat.Postre);
+        Preferencia3 h = new Preferencia3(8, "Tiramisú" , TipusPlat.Postre);
+        Preferencia3 j = new Preferencia3(9, "Gelat" , TipusPlat.Postre);
+        menu.add(a);
+        menu.add(j);
+        menu.add(b);
+        menu.add(c);
+        menu.add(d);
+        menu.add(e);
+        menu.add(f);
+        menu.add(g);
+        menu.add(h);
+        System.out.println("Tots els posibles tipus de plats");
+        for (TipusPlat tipus : TipusPlat.values()) {
+            System.out.println(tipus);
+        }
+        for (int i= 0; i < menu.size(); i++) {
+            if(menu.get(i).getTipus().equals(TipusPlat.Entrants)){
+                System.out.println(menu.get(i).toString());
+            }
+        }
+        System.out.println("\n");
+        for (int i= 0; i < menu.size(); i++) {
+            for (int i2= 0; i2 < menu.size(); i2++) {
+                if (menu.get(i2).getTipus().equals(TipusPlat.Entrants)) {
+                    System.out.println(menu.get(i2).toString());
+                }
+                for (int i3 = 0; i3 < menu.size(); i3++) {
+                    if (menu.get(i3).getTipus().equals(TipusPlat.Principal)) {
+                        System.out.println(menu.get(i3).toString());
+                    }
+                }
+                for (int i4 = 0; i4 < menu.size(); i4++) {
+                    if (menu.get(i4).getTipus().equals(TipusPlat.Segon)) {
+                        System.out.println(menu.get(i4).toString());
+                    }
+                }
+                for (int i5 = 0; i5 < menu.size(); i5++) {
+                    if (menu.get(i5).getTipus().equals(TipusPlat.Postre)) {
+                        System.out.println(menu.get(i5).toString());
+                    }
+                }
+            }
+        }
+    }
+
     public void cadena(){
         System.out.println("\n" + "------------------------");
     }
