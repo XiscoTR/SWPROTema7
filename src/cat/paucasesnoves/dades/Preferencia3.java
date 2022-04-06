@@ -1,14 +1,16 @@
 package cat.paucasesnoves.dades;
 
+import cat.paucasesnoves.Utilitats.Plats;
+
 import java.util.Objects;
 
 public class Preferencia3 {
 
     private int ordre;
     private String plat;
-    private Utilitats.TipusPlat tipus;
+    private Plats.TipusPlat tipus;
 
-    public Preferencia3(int ordre, String plat, Utilitats.TipusPlat tipus) {
+    public Preferencia3(int ordre, String plat, Plats.TipusPlat tipus) {
         this.ordre = ordre;
         this.plat = plat;
         this.tipus = tipus;
@@ -30,7 +32,7 @@ public class Preferencia3 {
         this.ordre = ordre;
     }
 
-    public Utilitats.TipusPlat getTipus() {
+    public Plats.TipusPlat getTipus() {
         return tipus;
     }
 

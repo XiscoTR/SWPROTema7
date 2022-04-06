@@ -1,13 +1,15 @@
 package cat.paucasesnoves.contenedors;
 
+import cat.paucasesnoves.Utilitats.Errors;
 import cat.paucasesnoves.dades.Preferencia;
 import cat.paucasesnoves.dades.Preferencia2;
 import cat.paucasesnoves.dades.Preferencia3;
-import cat.paucasesnoves.dades.Utilitats.TipusPlat;
+import cat.paucasesnoves.Utilitats.Plats.TipusPlat;
 
 import java.util.*;
 
 public class Main {
+
 
     public static void main(String[] args) {
 
@@ -25,7 +27,7 @@ public class Main {
         System.out.println("/PilaArrayDeque/" + "\n");
         p.provaPilaArrayDeque();
         p.cadena();
-        System.out.println("/CoaArayDeque/" + "\n");
+        System.out.println("/CoaArrayDeque/" + "\n");
         p.provaCoaArrayDeque();
         p.cadena();
         System.out.println("/HashSet/" + "\n");
@@ -39,6 +41,12 @@ public class Main {
         p.cadena();
         System.out.println("/Enumeracio/" + "\n");
         p.provesEnumeracio();
+        p.cadena();
+        System.out.println("/Collection/" + "\n");
+        p.provesCollection();
+        p.cadena();
+        System.out.println("/Collection/" + "\n");
+        p.enumErrors();
     }
 
 
@@ -151,13 +159,6 @@ public class Main {
 
     }
 
-//(Opcional) /"9"/ Implementa una classe Coa amb totes les operacions vistes per aquest contenidor. Utilitza la classe Element.
-// A la classe Proves crea un mètode anomenat provaCoa on creis una coa de Preferencia i hi posis una sèrie d'elements i els treguis.
-//Este metodo solo es para el formato de la consola
-
-//(Opcional) /"13"/ Al paquet contenidors crea una classe anomenada Conjunt que implementi un conjunt utilitzant objectes del tipus Element.
-// Heu d'implementar totes les operacions definides per el conjunt.
-
     public void provesHasMap(){
         HashMap<Integer, Preferencia2> mapaPreferencia = new HashMap<>();
         Preferencia2 a = new Preferencia2(1, "Paella");
@@ -189,9 +190,7 @@ public class Main {
         Preferencia3 f = new Preferencia3(6, "Sopa" , TipusPlat.Segon);
         Preferencia3 g = new Preferencia3(7, "Tarta de formatge" , TipusPlat.Postre);
         Preferencia3 h = new Preferencia3(8, "Tiramisú" , TipusPlat.Postre);
-        Preferencia3 j = new Preferencia3(9, "Gelat" , TipusPlat.Postre);
         menu.add(a);
-        menu.add(j);
         menu.add(b);
         menu.add(c);
         menu.add(d);
@@ -210,27 +209,35 @@ public class Main {
         }
         System.out.println("\n");
         for (int i= 0; i < menu.size(); i++) {
-            for (int i2= 0; i2 < menu.size(); i2++) {
-                if (menu.get(i2).getTipus().equals(TipusPlat.Entrants)) {
-                    System.out.println(menu.get(i2).toString());
-                }
-                for (int i3 = 0; i3 < menu.size(); i3++) {
-                    if (menu.get(i3).getTipus().equals(TipusPlat.Principal)) {
-                        System.out.println(menu.get(i3).toString());
-                    }
-                }
-                for (int i4 = 0; i4 < menu.size(); i4++) {
-                    if (menu.get(i4).getTipus().equals(TipusPlat.Segon)) {
-                        System.out.println(menu.get(i4).toString());
-                    }
-                }
-                for (int i5 = 0; i5 < menu.size(); i5++) {
-                    if (menu.get(i5).getTipus().equals(TipusPlat.Postre)) {
-                        System.out.println(menu.get(i5).toString());
-                    }
-                }
-            }
+            System.out.println(menu.get(i).getPlat());
         }
+    }
+
+    public void provesCollection(){
+        ArrayList <String> ordenar = new ArrayList<>();
+        ordenar.add("A");
+        ordenar.add("B");
+        ordenar.add("C");
+        ordenar.add("D");
+        ordenar.add("E");
+        ordenar.add("F");
+        ordenar.add("G");
+
+        Collections.shuffle(ordenar);
+        System.out.println("ArrayList desordenada: " +ordenar);
+        System.out.println("Maximo del ArrayList: " + "[" + Collections.max(ordenar) + "]");
+        System.out.println("Minimo del ArrayList: " + "[" + Collections.min(ordenar) + "]");
+        Collections.sort(ordenar, Collections.reverseOrder());
+        System.out.println("ArrayList ordenada al reves: " + ordenar);
+        Collections.sort(ordenar);
+        System.out.println("ArrayList ordenada: " + ordenar);
+        System.out.println("Mostrar la posición de un elemento: " + Collections.binarySearch(ordenar, "G"));
+    }
+
+    public void enumErrors(){
+        System.out.println(Errors.TipusError.get(0).getMessage() + ", " + Errors.TipusError.get(0).getCode());
+        System.out.println(Errors.TipusError.get(1).getMessage() + ", " + Errors.TipusError.get(1).getCode());
+        System.out.println(Errors.TipusError.get(-1).getMessage() + ", " + Errors.TipusError.get(-1).getCode());
     }
 
     public void cadena(){

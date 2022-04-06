@@ -1,6 +1,6 @@
-package cat.paucasesnoves.dades;
+package cat.paucasesnoves.Utilitats;
 
-public class Utilitats {
+public class Plats {
 
     public enum TipusPlat {
         Entrants, Principal, Segon, Postre
