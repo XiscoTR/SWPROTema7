@@ -1,10 +1,11 @@
-package cat.paucasesnoves.contenedors;
+package cat.paucasesnoves.contenidors;
 
 import cat.paucasesnoves.Utilitats.Errors;
 import cat.paucasesnoves.dades.Preferencia;
 import cat.paucasesnoves.dades.Preferencia2;
 import cat.paucasesnoves.dades.Preferencia3;
 import cat.paucasesnoves.Utilitats.Plats.TipusPlat;
+import org.w3c.dom.*;
 
 import java.util.*;
 
@@ -39,13 +40,19 @@ public class Main {
         System.out.println("/HashMap/" + "\n");
         p.provesHasMap();
         p.cadena();
+        System.out.println("/Coa/" + "\n");
+        p.provesCoes();
+        p.cadena();
+        System.out.println("/Conjunt/" + "\n");
+        p.provesConjunt();
+        p.cadena();
         System.out.println("/Enumeracio/" + "\n");
         p.provesEnumeracio();
         p.cadena();
         System.out.println("/Collection/" + "\n");
         p.provesCollection();
         p.cadena();
-        System.out.println("/Collection/" + "\n");
+        System.out.println("/enumErrors/" + "\n");
         p.enumErrors();
     }
 
@@ -232,6 +239,23 @@ public class Main {
         Collections.sort(ordenar);
         System.out.println("ArrayList ordenada: " + ordenar);
         System.out.println("Mostrar la posición de un elemento: " + Collections.binarySearch(ordenar, "G"));
+    }
+
+    public void provesCoes(){
+        Coa <Preferencia> aq = new Coa<>();
+        Preferencia a = new Preferencia(1, "Pasta");
+        Preferencia b = new Preferencia(2, "Carn");
+        Preferencia c = new Preferencia(3, "Peix");
+        aq.add(a);
+        aq.add(b);
+        aq.add(c);
+        System.out.println(aq.element());
+        System.out.println(aq.remove(b));
+        System.out.println(aq.isEmpty());
+        aq.clear();
+    }
+
+    public void provesConjunt() {
     }
 
     public void enumErrors(){

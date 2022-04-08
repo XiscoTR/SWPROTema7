@@ -1,4 +1,4 @@
-package cat.paucasesnoves.contenedors;
+package cat.paucasesnoves.contenidors;
 
 public class PilaInteger {
 
